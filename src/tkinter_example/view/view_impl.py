@@ -1,4 +1,4 @@
-import tkinter.ttk as ttk
+from tkinter import ttk
 
 
 class View:
@@ -33,15 +33,6 @@ class View:
         self.theme_combo.bind("<<ComboboxSelected>>", self.change_theme)
         self.theme_combo.grid(row=3, sticky="NSEW")
 
-    def change_theme(self, event):
+    def change_theme(self, _event):
         selected = self.theme_combo.get()
         self.style.theme_use(selected)
-
-
-if __name__ == "__main__":
-    import tkinter as tk
-
-    root = tk.Tk()
-    v = View(root)
-    # v = View(root)
-    root.mainloop()

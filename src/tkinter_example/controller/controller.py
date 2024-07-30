@@ -1,5 +1,5 @@
-from model import ModelProtocol
-from view import View
+from ..model import ModelProtocol
+from ..view import View
 
 
 class Controller:
@@ -21,11 +21,11 @@ class Controller:
         self.view.frame.master.mainloop()
 
     def increment(self):
-        # TODO ここでViewとModelの縁切り
+        # TODO: ここでViewとModelの縁切り
         self.model.increment()
 
     def decrement(self):
-        # TODO ここでViewとModelの縁切り
+        # TODO: ここでViewとModelの縁切り
         self.model.decrement()
 
     def update_view(self):

@@ -1,6 +1,6 @@
 from unittest.mock import MagicMock
 
-from model import Model, ModelProtocol
+from tkinter_example.model import Model, ModelProtocol
 
 
 def test_supports_protocol():

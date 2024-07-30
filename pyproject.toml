@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tkinter-example"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "CC0-1.0"
+keywords = []
+authors = [
+  { name = "Takumasa Nakamura", email = "n.takumasa@gmail.com" },
+]
+classifiers = [
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/n-takumasa/tkinter-example#readme"
+Issues = "https://github.com/n-takumasa/tkinter-example/issues"
+Source = "https://github.com/n-takumasa/tkinter-example"
+
+[tool.hatch.version]
+path = "src/tkinter_example/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/tkinter_example tests}"
+
+[tool.coverage.run]
+source_pkgs = ["tkinter_example", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/tkinter_example/__about__.py",
+]
+
+[tool.coverage.paths]
+tkinter_example = ["src/tkinter_example", "*/tkinter-example/src/tkinter_example"]
+tests = ["tests", "*/tkinter-example/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.hatch.envs.hatch-static-analysis]
+dependencies = ["ruff==0.4.5"]
+config-path = "ruff_defaults.toml"
+
+[tool.ruff]
+extend = "ruff_defaults.toml"
+target-version = "py38"
+line-length = 88
+lint.extend-ignore = [
+  "TID252",  # Prefer absolute imports over relative imports
+]
